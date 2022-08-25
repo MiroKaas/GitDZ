@@ -1,0 +1,398 @@
+[student1669_3@bigdataanalytics-worker-3 ~]$ /usr/hdp/3.1.4.0-315/kafka/bin/
+-bash: /usr/hdp/3.1.4.0-315/kafka/bin/: Это каталог
+[student1669_3@bigdataanalytics-worker-3 ~]$ cd /usr/hdp/3.1.4.0-315/kafka/bin/
+[student1669_3@bigdataanalytics-worker-3 bin]$ ls
+connect-distributed.sh        kafka-console-consumer.sh    kafka-dump-log.sh                    kafka-replica-verification.sh       kafka-verifiable-consumer.sh     zookeeper-server-stop.sh
+connect-standalone.sh         kafka-console-producer.sh    kafka-log-dirs.sh                    kafka-run-class.sh                  kafka-verifiable-producer.sh     zookeeper-shell.sh
+kafka                         kafka-consumer-groups.sh     kafka-mirror-maker.sh                kafka-server-start.sh               trogdor.sh
+kafka-acls.sh                 kafka-consumer-perf-test.sh  kafka-preferred-replica-election.sh  kafka-server-stop.sh                windows
+kafka-broker-api-versions.sh  kafka-delegation-tokens.sh   kafka-producer-perf-test.sh          kafka-streams-application-reset.sh  zookeeper-security-migration.sh
+kafka-configs.sh              kafka-delete-records.sh      kafka-reassign-partitions.sh         kafka-topics.sh                     zookeeper-server-start.sh
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh help
+Command must include exactly one action: --list, --describe, --create, --alter or --delete
+Option                                   Description                            
+------                                   -----------                            
+--alter                                  Alter the number of partitions,        
+                                           replica assignment, and/or           
+                                           configuration for the topic.         
+--config <String: name=value>            A topic configuration override for the 
+                                           topic being created or altered.The   
+                                           following is a list of valid         
+                                           configurations:                      
+                                         	cleanup.policy                        
+                                         	compression.type                      
+                                         	delete.retention.ms                   
+                                         	file.delete.delay.ms                  
+                                         	flush.messages                        
+                                         	flush.ms                              
+                                         	follower.replication.throttled.       
+                                           replicas                             
+                                         	index.interval.bytes                  
+                                         	leader.replication.throttled.replicas 
+                                         	max.message.bytes                     
+                                         	message.downconversion.enable         
+                                         	message.format.version                
+                                         	message.timestamp.difference.max.ms   
+                                         	message.timestamp.type                
+                                         	min.cleanable.dirty.ratio             
+                                         	min.compaction.lag.ms                 
+                                         	min.insync.replicas                   
+                                         	preallocate                           
+                                         	retention.bytes                       
+                                         	retention.ms                          
+                                         	segment.bytes                         
+                                         	segment.index.bytes                   
+                                         	segment.jitter.ms                     
+                                         	segment.ms                            
+                                         	unclean.leader.election.enable        
+                                         See the Kafka documentation for full   
+                                           details on the topic configs.        
+--create                                 Create a new topic.                    
+--delete                                 Delete a topic                         
+--delete-config <String: name>           A topic configuration override to be   
+                                           removed for an existing topic (see   
+                                           the list of configurations under the 
+                                           --config option).                    
+--describe                               List details for the given topics.     
+--disable-rack-aware                     Disable rack aware replica assignment  
+--force                                  Suppress console prompts               
+--help                                   Print usage information.               
+--if-exists                              if set when altering or deleting       
+                                           topics, the action will only execute 
+                                           if the topic exists                  
+--if-not-exists                          if set when creating topics, the       
+                                           action will only execute if the      
+                                           topic does not already exist         
+--list                                   List all available topics.             
+--partitions <Integer: # of partitions>  The number of partitions for the topic 
+                                           being created or altered (WARNING:   
+                                           If partitions are increased for a    
+                                           topic that has a key, the partition  
+                                           logic or ordering of the messages    
+                                           will be affected                     
+--replica-assignment <String:            A list of manual partition-to-broker   
+  broker_id_for_part1_replica1 :           assignments for the topic being      
+  broker_id_for_part1_replica2 ,           created or altered.                  
+  broker_id_for_part2_replica1 :                                                
+  broker_id_for_part2_replica2 , ...>                                           
+--replication-factor <Integer:           The replication factor for each        
+  replication factor>                      partition in the topic being created.
+--topic <String: topic>                  The topic to be create, alter or       
+                                           describe. Can also accept a regular  
+                                           expression except for --create option
+--topics-with-overrides                  if set when describing topics, only    
+                                           show topics that have overridden     
+                                           configs                              
+--unavailable-partitions                 if set when describing topics, only    
+                                           show partitions whose leader is not  
+                                           available                            
+--under-replicated-partitions            if set when describing topics, only    
+                                           show under replicated partitions     
+--zookeeper <String: hosts>              REQUIRED: The connection string for    
+                                           the zookeeper connection in the form 
+                                           host:port. Multiple hosts can be     
+                                           given to allow fail-over.            
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --list --zookiper bigdataanalytics-worker-3:2181
+Exception in thread "main" joptsimple.UnrecognizedOptionException: zookiper is not a recognized option
+	at joptsimple.OptionException.unrecognizedOption(OptionException.java:108)
+	at joptsimple.OptionParser.handleLongOptionToken(OptionParser.java:510)
+	at joptsimple.OptionParserState$2.handleArgument(OptionParserState.java:56)
+	at joptsimple.OptionParser.parse(OptionParser.java:396)
+	at kafka.admin.TopicCommand$TopicCommandOptions.<init>(TopicCommand.scala:358)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:44)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --list --zookeeper bigdataanalytics-worker-3:2181
+--lesson-2-srr
+--shop_sales
+MTGbank
+MTGbnk
+__consumer_offsets
+ads_data
+ads_sink
+anikushina-1669
+anikushina_1669
+anime
+cardio
+daryaGre
+daryaGre_sink
+full_data
+fulldata
+iris
+iris_df
+iris_hdfs_ml
+iris_new
+iris_new1
+iris_sink_x
+lesson3_sokolova
+lesson5_sokolova
+lesson_2
+new_iris
+new_iris1
+order_items
+orders_json
+pass_unknown
+sales_unknown
+shadrin_iris
+shadrin_iris_pikalev
+shadrin_iris_sink
+shop_sales
+shop_sales_unknown
+sport_new
+sport_sink
+sport_types
+srr_titanic
+srr_titanic_sink
+st14_banksub_input
+st14_banksub_output
+st14_banksub_штput
+st14_titanic_input
+st14_titanic_output
+st14_titanic_test
+st14_titanic_test_out
+st_heart_new
+student559_17
+student897_2_lesson5
+test
+virtual_safety_car_estimates
+virtual_safety_car_estimates.json
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --delete --topic lesson2  --zookeeper bigdataanalytics-worker-3:2181
+Error while executing topic command : Topic lesson2 does not exist on ZK path bigdataanalytics-worker-3:2181
+[2022-08-25 07:39:18,620] ERROR java.lang.IllegalArgumentException: Topic lesson2 does not exist on ZK path bigdataanalytics-worker-3:2181
+	at kafka.admin.TopicCommand$.deleteTopic(TopicCommand.scala:182)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:71)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+ (kafka.admin.TopicCommand$)
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --delete --topiclesson2  --zookeeper bigdataanalytics-worker-3:2181
+Exception in thread "main" joptsimple.UnrecognizedOptionException: topiclesson2 is not a recognized option
+	at joptsimple.OptionException.unrecognizedOption(OptionException.java:108)
+	at joptsimple.OptionParser.handleLongOptionToken(OptionParser.java:510)
+	at joptsimple.OptionParserState$2.handleArgument(OptionParserState.java:56)
+	at joptsimple.OptionParser.parse(OptionParser.java:396)
+	at kafka.admin.TopicCommand$TopicCommandOptions.<init>(TopicCommand.scala:358)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:44)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --delete --topic lesson2  --zookeeper bigdataanalytics-worker-3:2181
+Error while executing topic command : Topic lesson2 does not exist on ZK path bigdataanalytics-worker-3:2181
+[2022-08-25 07:41:38,528] ERROR java.lang.IllegalArgumentException: Topic lesson2 does not exist on ZK path bigdataanalytics-worker-3:2181
+	at kafka.admin.TopicCommand$.deleteTopic(TopicCommand.scala:182)
+	at kafka.admin.TopicCommand$.main(TopicCommand.scala:71)
+	at kafka.admin.TopicCommand.main(TopicCommand.scala)
+ (kafka.admin.TopicCommand$)
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --list --zookeeper bigdataanalytics-worker-3:2181
+--lesson-2-srr
+--shop_sales
+MTGbank
+MTGbnk
+__consumer_offsets
+ads_data
+ads_sink
+anikushina-1669
+anikushina_1669
+anime
+cardio
+daryaGre
+daryaGre_sink
+full_data
+fulldata
+iris
+iris_df
+iris_hdfs_ml
+iris_new
+iris_new1
+iris_sink_x
+lesson3_sokolova
+lesson5_sokolova
+lesson_2
+new_iris
+new_iris1
+order_items
+orders_json
+pass_unknown
+sales_unknown
+shadrin_iris
+shadrin_iris_pikalev
+shadrin_iris_sink
+shop_sales
+shop_sales_unknown
+sport_new
+sport_sink
+sport_types
+srr_titanic
+srr_titanic_sink
+st14_banksub_input
+st14_banksub_output
+st14_banksub_штput
+st14_titanic_input
+st14_titanic_output
+st14_titanic_test
+st14_titanic_test_out
+st_heart_new
+student559_17
+student897_2_lesson5
+test
+virtual_safety_car_estimates
+virtual_safety_car_estimates.json
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --delete --topic lesson_2  --zookeeper bigdataanalytics-worker-3:2181
+Topic lesson_2 is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --create --topic lesson_2  --zookeeper bigdataanalytics-worker-3:2181
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Missing required argument "[partitions]"
+Option                                   Description                            
+------                                   -----------                            
+--alter                                  Alter the number of partitions,        
+                                           replica assignment, and/or           
+                                           configuration for the topic.         
+--config <String: name=value>            A topic configuration override for the 
+                                           topic being created or altered.The   
+                                           following is a list of valid         
+                                           configurations:                      
+                                         	cleanup.policy                        
+                                         	compression.type                      
+                                         	delete.retention.ms                   
+                                         	file.delete.delay.ms                  
+                                         	flush.messages                        
+                                         	flush.ms                              
+                                         	follower.replication.throttled.       
+                                           replicas                             
+                                         	index.interval.bytes                  
+                                         	leader.replication.throttled.replicas 
+                                         	max.message.bytes                     
+                                         	message.downconversion.enable         
+                                         	message.format.version                
+                                         	message.timestamp.difference.max.ms   
+                                         	message.timestamp.type                
+                                         	min.cleanable.dirty.ratio             
+                                         	min.compaction.lag.ms                 
+                                         	min.insync.replicas                   
+                                         	preallocate                           
+                                         	retention.bytes                       
+                                         	retention.ms                          
+                                         	segment.bytes                         
+                                         	segment.index.bytes                   
+                                         	segment.jitter.ms                     
+                                         	segment.ms                            
+                                         	unclean.leader.election.enable        
+                                         See the Kafka documentation for full   
+                                           details on the topic configs.        
+--create                                 Create a new topic.                    
+--delete                                 Delete a topic                         
+--delete-config <String: name>           A topic configuration override to be   
+                                           removed for an existing topic (see   
+                                           the list of configurations under the 
+                                           --config option).                    
+--describe                               List details for the given topics.     
+--disable-rack-aware                     Disable rack aware replica assignment  
+--force                                  Suppress console prompts               
+--help                                   Print usage information.               
+--if-exists                              if set when altering or deleting       
+                                           topics, the action will only execute 
+                                           if the topic exists                  
+--if-not-exists                          if set when creating topics, the       
+                                           action will only execute if the      
+                                           topic does not already exist         
+--list                                   List all available topics.             
+--partitions <Integer: # of partitions>  The number of partitions for the topic 
+                                           being created or altered (WARNING:   
+                                           If partitions are increased for a    
+                                           topic that has a key, the partition  
+                                           logic or ordering of the messages    
+                                           will be affected                     
+--replica-assignment <String:            A list of manual partition-to-broker   
+  broker_id_for_part1_replica1 :           assignments for the topic being      
+  broker_id_for_part1_replica2 ,           created or altered.                  
+  broker_id_for_part2_replica1 :                                                
+  broker_id_for_part2_replica2 , ...>                                           
+--replication-factor <Integer:           The replication factor for each        
+  replication factor>                      partition in the topic being created.
+--topic <String: topic>                  The topic to be create, alter or       
+                                           describe. Can also accept a regular  
+                                           expression except for --create option
+--topics-with-overrides                  if set when describing topics, only    
+                                           show topics that have overridden     
+                                           configs                              
+--unavailable-partitions                 if set when describing topics, only    
+                                           show partitions whose leader is not  
+                                           available                            
+--under-replicated-partitions            if set when describing topics, only    
+                                           show under replicated partitions     
+--zookeeper <String: hosts>              REQUIRED: The connection string for    
+                                           the zookeeper connection in the form 
+                                           host:port. Multiple hosts can be     
+                                           given to allow fail-over.            
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --create --topic lesson_2  --zookeeper bigdataanalytics-worker-3:2181 --partitions 3 --replication-factor 2 --config retention.ms=-1
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic "lesson_2".
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --describe --topic lesson_2  --zookeeper bigdataanalytics-worker-3:2181
+Topic:lesson_2	PartitionCount:3	ReplicationFactor:2	Configs:retention.ms=-1
+	Topic: lesson_2	Partition: 0	Leader: 1002	Replicas: 1002,1003	Isr: 1002,1003
+	Topic: lesson_2	Partition: 1	Leader: 1003	Replicas: 1003,1004	Isr: 1003,1004
+	Topic: lesson_2	Partition: 2	Leader: 1004	Replicas: 1004,1001	Isr: 1004,1001
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --alter --topic lesson_2  --zookeeper bigdataanalytics-worker-3:2181 --config retention.ms=60000
+WARNING: Altering topic configuration from this script has been deprecated and may be removed in future releases.
+         Going forward, please use kafka-configs.sh for this functionality
+Updated config for topic "lesson_2".
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --describe --topic lesson_2  --zookeeper bigdataanalytics-worker-3:2181
+Topic:lesson_2	PartitionCount:3	ReplicationFactor:2	Configs:retention.ms=60000
+	Topic: lesson_2	Partition: 0	Leader: 1002	Replicas: 1002,1003	Isr: 1002,1003
+	Topic: lesson_2	Partition: 1	Leader: 1003	Replicas: 1003,1004	Isr: 1003,1004
+	Topic: lesson_2	Partition: 2	Leader: 1004	Replicas: 1004,1001	Isr: 1004,1001
+[student1669_3@bigdataanalytics-worker-3 bin]$ ssh -i /Users/mirokaas/Documents/Geekbrains/SPARK_STREAMING/SSLesson1/id_rsa_student1669_3.crash student1669_3@37.139.41.176
+Warning: Identity file /Users/mirokaas/Documents/Geekbrains/SPARK_STREAMING/SSLesson1/id_rsa_student1669_3.crash not accessible: No such file or directory.
+The authenticity of host '37.139.41.176 (37.139.41.176)' can't be established.
+ECDSA key fingerprint is SHA256:8H1fecI0ukhYEFla6a4isqlKOp+yXFzd09FapgLRODo.
+ECDSA key fingerprint is MD5:b7:8b:f8:c3:1c:c4:ae:09:46:c2:e0:70:7d:8b:38:57.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '37.139.41.176' (ECDSA) to the list of known hosts.
+Last login: Thu Aug 25 06:29:04 2022 from 46.138.246.244
+[student1669_3@bigdataanalytics-worker-3 ~]$ cd /usr/hdp/3.1.4.0-315/kafka/bin/
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-console-consumer.sh --topic lesson_2 --bootstrap-server bigdataanalytics-worker-3:6667
+^CProcessed a total of 0 messages
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-console-producer.sh --topic lesson_2 --broker-list bigdbigdataanalytics-worker-3:6667
+[2022-08-25 09:34:44,930] WARN Removing server bigdbigdataanalytics-worker-3:6667 from bootstrap.servers as DNS resolution failed for bigdbigdataanalytics-worker-3 (org.apache.kafka.clients.ClientUtils)
+org.apache.kafka.common.KafkaException: Failed to construct kafka producer
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:457)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:304)
+	at kafka.tools.ConsoleProducer$.main(ConsoleProducer.scala:45)
+	at kafka.tools.ConsoleProducer.main(ConsoleProducer.scala)
+Caused by: org.apache.kafka.common.config.ConfigException: No resolvable bootstrap urls given in bootstrap.servers
+	at org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:66)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:406)
+	... 3 more
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-console-producer.sh --topic lesson_2 --broker-list bigdbigdataanalytics-worker-3:6667
+[2022-08-25 09:37:18,958] WARN Removing server bigdbigdataanalytics-worker-3:6667 from bootstrap.servers as DNS resolution failed for bigdbigdataanalytics-worker-3 (org.apache.kafka.clients.ClientUtils)
+org.apache.kafka.common.KafkaException: Failed to construct kafka producer
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:457)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:304)
+	at kafka.tools.ConsoleProducer$.main(ConsoleProducer.scala:45)
+	at kafka.tools.ConsoleProducer.main(ConsoleProducer.scala)
+Caused by: org.apache.kafka.common.config.ConfigException: No resolvable bootstrap urls given in bootstrap.servers
+	at org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:66)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:406)
+	... 3 more
+[student1669_3@bigdataanalytics-worker-3 bin]$ /usr/hdp/3.1.4.0-315/kafka/bin/kafka-console-producer.sh --topic lesson_2 --broker-list bigdataanalytics-worker-3:6667
+>^C[student1669_3@bigdataanalytics-worker-3 bin]$ cd /usr/hdp/3.1.4.0-315/kafka/bin/
+[student1669_3@bigdataanalytics-worker-3 bin]$ ./kafka-console-producer.sh --topic lesson_2 --broker-list bigdbigdataanalytics-worker-3:6667
+[2022-08-25 09:40:02,384] WARN Removing server bigdbigdataanalytics-worker-3:6667 from bootstrap.servers as DNS resolution failed for bigdbigdataanalytics-worker-3 (org.apache.kafka.clients.ClientUtils)
+org.apache.kafka.common.KafkaException: Failed to construct kafka producer
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:457)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:304)
+	at kafka.tools.ConsoleProducer$.main(ConsoleProducer.scala:45)
+	at kafka.tools.ConsoleProducer.main(ConsoleProducer.scala)
+Caused by: org.apache.kafka.common.config.ConfigException: No resolvable bootstrap urls given in bootstrap.servers
+	at org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:66)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:406)
+	... 3 more
+[student1669_3@bigdataanalytics-worker-3 bin]$ /usr/hdp/3.1.4.0-315/kafka/bin/kafka-console-producer.sh --topic lesson_2 --broker-list bigdataanalytics-worker-3:6667
+>message 1
+>message 2
+>message 3
+>message 4
+>message 5
+>message 6   
+>^C[student1669_3@bigdataanalytics-worker-3 bin/usr/hdp/3.1.4.0-315/kafka/bin/kafka-console-producer.sh --topic lesson_2 --broker-list bigdataanalytics-worker-3:6667 --max-messages 3
+max-messages is not a recognized option
+[student1669_3@bigdataanalytics-worker-3 bin]$ /usr/hdp/3.1.4.0-315/kafka/bin/kafka-console-producer.sh --topic lesson_2 --broker-list bigdataanalytics-worker-3:6667
+>1       
+>2
+>3
