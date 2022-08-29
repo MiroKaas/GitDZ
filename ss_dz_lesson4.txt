@@ -1,0 +1,1018 @@
+Last login: Sat Aug 27 22:30:47 on ttys000
+mirokaas@MacBook-Pro-Miro ~ % ssh -i /Users/mirokaas/Documents/Geekbrains/SPARK_STREAMING/SSLesson1/id_rsa_student1669_3.crash student1669_3@37.139.41.176
+Last login: Mon Aug 29 11:48:27 2022 from 46.138.246.244
+[student1669_3@bigdataanalytics-worker-3 ~]$ export SPARK_KAFKA_VERSION=0.10
+[student1669_3@bigdataanalytics-worker-3 ~]$ /usr/hdp/3.1.4.0-315/kafka/bin/kafka-console-consumer.sh --topic timofeeva_iris --bootstrap-server bigdataanalytics-worker-3:6667 --from-beginning --max-messages 10
+{"Id": "1", "SepalLengthCm": "5.1", "SepalWidthCm": "3.5", "PetalLengthCm": "1.4", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "2", "SepalLengthCm": "4.9", "SepalWidthCm": "3.0", "PetalLengthCm": "1.4", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "3", "SepalLengthCm": "4.7", "SepalWidthCm": "3.2", "PetalLengthCm": "1.3", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "4", "SepalLengthCm": "4.6", "SepalWidthCm": "3.1", "PetalLengthCm": "1.5", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "5", "SepalLengthCm": "5.0", "SepalWidthCm": "3.6", "PetalLengthCm": "1.4", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "6", "SepalLengthCm": "5.4", "SepalWidthCm": "3.9", "PetalLengthCm": "1.7", "PetalWidthCm": "0.4", "Species": "Iris-setosa"}
+{"Id": "7", "SepalLengthCm": "4.6", "SepalWidthCm": "3.4", "PetalLengthCm": "1.4", "PetalWidthCm": "0.3", "Species": "Iris-setosa"}
+{"Id": "8", "SepalLengthCm": "5.0", "SepalWidthCm": "3.4", "PetalLengthCm": "1.5", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "9", "SepalLengthCm": "4.4", "SepalWidthCm": "2.9", "PetalLengthCm": "1.4", "PetalWidthCm": "0.2", "Species": "Iris-setosa"}
+{"Id": "10", "SepalLengthCm": "4.9", "SepalWidthCm": "3.1", "PetalLengthCm": "1.5", "PetalWidthCm": "0.1", "Species": "Iris-setosa"}
+Processed a total of 10 messages
+[student1669_3@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student1669_3/.ivy2/cache
+The jars for the packages stored in: /home/student1669_3/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-9388dd4e-b4b7-4cc5-be84-ffc36f0ff6bd;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+:: resolution report :: resolve 296ms :: artifacts dl 11ms
+	:: modules in use:
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   6   |   0   |   0   |   0   ||   6   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-9388dd4e-b4b7-4cc5-be84-ffc36f0ff6bd
+	confs: [default]
+	0 artifacts copied, 6 already retrieved (0kB/6ms)
+22/08/29 12:02:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> from pyspark.sql.types import StructType, StringType, FloatType
+>>> kafka_brokers = "bigdataanalytics-worker-3:6667"
+>>> raw_data = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "timofeeva_iris"). \
+...     option("startingOffsets", "earliest"). \
+...     option("maxOffsetsPerTrigger", "5"). \
+...     load()
+>>> schema = StructType().add("Id",StringType()) \
+...     .add("SepalLengthCm", FloatType()) \
+...     .add("SepalWidthCm", FloatType()) \
+...     .add("PetalLengthCm", FloatType()) \
+...     .add("PetalWidthCm", FloatType()) \
+...     .add("Species", StringType())
+>>> parsed_iris = raw_data.select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset").select("value.*", "offset")
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=False) \
+...         .start()
+... 
+>>> out = console_output(parsed_iris, 5)
+22/08/29 12:04:14 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++----+-------------+------------+-------------+------------+-------+------+
+|Id  |SepalLengthCm|SepalWidthCm|PetalLengthCm|PetalWidthCm|Species|offset|
++----+-------------+------------+-------------+------------+-------+------+
+|null|null         |null        |null         |null        |null   |0     |
+|null|null         |null        |null         |null        |null   |1     |
+|null|null         |null        |null         |null        |null   |2     |
+|null|null         |null        |null         |null        |null   |3     |
+|null|null         |null        |null         |null        |null   |4     |
++----+-------------+------------+-------------+------------+-------+------+
+
+22/08/29 12:04:20 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 5000 milliseconds, but spent 5125 milliseconds
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++----+-------------+------------+-------------+------------+-------+------+
+|Id  |SepalLengthCm|SepalWidthCm|PetalLengthCm|PetalWidthCm|Species|offset|
++----+-------------+------------+-------------+------------+-------+------+
+|null|null         |null        |null         |null        |null   |5     |
+|null|null         |null        |null         |null        |null   |6     |
+|null|null         |null        |null         |null        |null   |7     |
+|null|null         |null        |null         |null        |null   |8     |
+|null|null         |null        |null         |null        |null   |9     |
++----+-------------+------------+-------------+------------+-------+------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++----+-------------+------------+-------------+------------+-------+------+
+|Id  |SepalLengthCm|SepalWidthCm|PetalLengthCm|PetalWidthCm|Species|offset|
++----+-------------+------------+-------------+------------+-------+------+
+|null|null         |null        |null         |null        |null   |10    |
+|null|null         |null        |null         |null        |null   |11    |
+|null|null         |null        |null         |null        |null   |12    |
+|null|null         |null        |null         |null        |null   |13    |
+|null|null         |null        |null         |null        |null   |14    |
++----+-------------+------------+-------------+------------+-------+------+
+
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> out.stop()
+>>> raw_data.printSchema()
+root
+ |-- key: binary (nullable = true)
+ |-- value: binary (nullable = true)
+ |-- topic: string (nullable = true)
+ |-- partition: integer (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- timestamp: timestamp (nullable = true)
+ |-- timestampType: integer (nullable = true)
+
+>>> parsed_iris.printSchema()
+root
+ |-- Id: string (nullable = true)
+ |-- SepalLengthCm: float (nullable = true)
+ |-- SepalWidthCm: float (nullable = true)
+ |-- PetalLengthCm: float (nullable = true)
+ |-- PetalWidthCm: float (nullable = true)
+ |-- Species: string (nullable = true)
+ |-- offset: long (nullable = true)
+
+>>> schema = StructType().add("Id",StringType()) \
+...     .add("SepalLengthCm", StringType()) \
+...     .add("SepalWidthCm", StringType()) \
+...     .add("PetalLengthCm", StringType()) \
+...     .add("PetalWidthCm", StringType()) \
+...     .add("Species", StringType())
+>>> value_iris = raw_orders.select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'raw_orders' is not defined
+>>> value_iris = raw_iris.select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'raw_iris' is not defined
+>>> value_iris = raw_data.select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset")
+>>> parsed_iris = value_iris.select("value.*", "offset")
+>>> parsed_iris.printSchema()
+root
+ |-- Id: string (nullable = true)
+ |-- SepalLengthCm: string (nullable = true)
+ |-- SepalWidthCm: string (nullable = true)
+ |-- PetalLengthCm: string (nullable = true)
+ |-- PetalWidthCm: string (nullable = true)
+ |-- Species: string (nullable = true)
+ |-- offset: long (nullable = true)
+
+>>> out = console_output(parsed_iris,5)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++---+-------------+------------+-------------+------------+-----------+------+
+|Id |SepalLengthCm|SepalWidthCm|PetalLengthCm|PetalWidthCm|Species    |offset|
++---+-------------+------------+-------------+------------+-----------+------+
+|1  |5.1          |3.5         |1.4          |0.2         |Iris-setosa|0     |
+|2  |4.9          |3.0         |1.4          |0.2         |Iris-setosa|1     |
+|3  |4.7          |3.2         |1.3          |0.2         |Iris-setosa|2     |
+|4  |4.6          |3.1         |1.5          |0.2         |Iris-setosa|3     |
+|5  |5.0          |3.6         |1.4          |0.2         |Iris-setosa|4     |
++---+-------------+------------+-------------+------------+-----------+------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++---+-------------+------------+-------------+------------+-----------+------+
+|Id |SepalLengthCm|SepalWidthCm|PetalLengthCm|PetalWidthCm|Species    |offset|
++---+-------------+------------+-------------+------------+-----------+------+
+|6  |5.4          |3.9         |1.7          |0.4         |Iris-setosa|5     |
+|7  |4.6          |3.4         |1.4          |0.3         |Iris-setosa|6     |
+|8  |5.0          |3.4         |1.5          |0.2         |Iris-setosa|7     |
+|9  |4.4          |2.9         |1.4          |0.2         |Iris-setosa|8     |
+|10 |4.9          |3.1         |1.5          |0.1         |Iris-setosa|9     |
++---+-------------+------------+-------------+------------+-----------+------+
+
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> out.stop()
+>>> 
+>>> exit()
+[student1669_3@bigdataanalytics-worker-3 ~]$ /usr/hdp/3.1.4.0-315/kafka/bin/kafka-console-consumer.sh --topic timofeeva_iris --bootstrap-server bigdataanalytics-worker-3:6667 --from-beginning --max-messages 10
+
+[
+  {"sepalLength": 5.1, "sepalWidth": 3.5, "petalLength": 1.4, "petalWidth": 0.2, "species": "setosa"},
+  {"sepalLength": 4.9, "sepalWidth": 3.0, "petalLength": 1.4, "petalWidth": 0.2, "species": "setosa"},
+  {"sepalLength": 4.7, "sepalWidth": 3.2, "petalLength": 1.3, "petalWidth": 0.2, "species": "setosa"},
+  {"sepalLength": 4.6, "sepalWidth": 3.1, "petalLength": 1.5, "petalWidth": 0.2, "species": "setosa"},
+  {"sepalLength": 5.0, "sepalWidth": 3.6, "petalLength": 1.4, "petalWidth": 0.2, "species": "setosa"},
+  {"sepalLength": 5.4, "sepalWidth": 3.9, "petalLength": 1.7, "petalWidth": 0.4, "species": "setosa"},
+  {"sepalLength": 4.6, "sepalWidth": 3.4, "petalLength": 1.4, "petalWidth": 0.3, "species": "setosa"},
+  {"sepalLength": 5.0, "sepalWidth": 3.4, "petalLength": 1.5, "petalWidth": 0.2, "species": "setosa"},
+  {"sepalLength": 4.4, "sepalWidth": 2.9, "petalLength": 1.4, "petalWidth": 0.2, "species": "setosa"},
+Processed a total of 10 messages
+[student1669_3@bigdataanalytics-worker-3 ~]$ 
+[student1669_3@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student1669_3/.ivy2/cache
+The jars for the packages stored in: /home/student1669_3/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-ea9dea91-7612-4495-812c-5df1ce882e24;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+:: resolution report :: resolve 354ms :: artifacts dl 6ms
+	:: modules in use:
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   6   |   0   |   0   |   0   ||   6   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-ea9dea91-7612-4495-812c-5df1ce882e24
+	confs: [default]
+	0 artifacts copied, 6 already retrieved (0kB/6ms)
+22/08/29 12:31:31 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> from pyspark.sql.types import StructType, StringType, FloatType
+>>> kafka_brokers = "bigdataanalytics-worker-3:6667"
+>>> raw_data = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "timofeeva_iris"). \
+...     option("startingOffsets", "earliest"). \
+...     option("maxOffsetsPerTrigger", "5"). \
+...     load()
+>>> schema = StructType() \
+...     .add("sepalLength", FloatType()) \
+...     .add("sepalWidth", FloatType()) \
+...     .add("petalLength", FloatType()) \
+...     .add("petalWidth", FloatType()) \
+...     .add("species", StringType()) 
+>>> parsed_iris = raw_data.select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset").select("value.*", "offset")
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=False) \
+...         .start()
+... 
+>>> out = console_output(parsed_iris, 5)
+22/08/29 12:58:35 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++-----------+----------+-----------+----------+-------+------+
+|sepalLength|sepalWidth|petalLength|petalWidth|species|offset|
++-----------+----------+-----------+----------+-------+------+
+|null       |null      |null       |null      |null   |0     |
+|5.1        |3.5       |1.4        |0.2       |setosa |1     |
+|4.9        |3.0       |1.4        |0.2       |setosa |2     |
+|4.7        |3.2       |1.3        |0.2       |setosa |3     |
+|4.6        |3.1       |1.5        |0.2       |setosa |4     |
++-----------+----------+-----------+----------+-------+------+
+
+22/08/29 12:58:40 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 5000 milliseconds, but spent 5184 milliseconds
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-----------+----------+-----------+----------+-------+------+
+|sepalLength|sepalWidth|petalLength|petalWidth|species|offset|
++-----------+----------+-----------+----------+-------+------+
+|5.0        |3.6       |1.4        |0.2       |setosa |5     |
+|5.4        |3.9       |1.7        |0.4       |setosa |6     |
+|4.6        |3.4       |1.4        |0.3       |setosa |7     |
+|5.0        |3.4       |1.5        |0.2       |setosa |8     |
+|4.4        |2.9       |1.4        |0.2       |setosa |9     |
++-----------+----------+-----------+----------+-------+------+
+
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> out.stop()-------------------------------------------
+Batch: 2
+-------------------------------------------
++-----------+----------+-----------+----------+-------+------+
+|sepalLength|sepalWidth|petalLength|petalWidth|species|offset|
++-----------+----------+-----------+----------+-------+------+
+|4.9        |3.1       |1.5        |0.1       |setosa |10    |
+|5.4        |3.7       |1.5        |0.2       |setosa |11    |
+|4.8        |3.4       |1.6        |0.2       |setosa |12    |
+|4.8        |3.0       |1.4        |0.1       |setosa |13    |
+|4.3        |3.0       |1.1        |0.1       |setosa |14    |
++-----------+----------+-----------+----------+-------+------+
+
+
+>>> out.stop()
+>>> spark.sql("show tables").show()
++--------+--------------------+-----------+
+|database|           tableName|isTemporary|
++--------+--------------------+-----------+
+| default|       airport_codes|      false|
+| default|airport_codes_part_2|      false|
+| default|             iris_ml|      false|
+| default|           lego_sets|      false|
+| default|         lego_themes|      false|
+| default|titanic_train_orc...|      false|
+| default|        uber_data_ex|      false|
+| default|   uber_data_ex_avro|      false|
+| default|    uber_data_ex_csv|      false|
+| default|    uber_data_ex_orc|      false|
+| default|     uber_data_ex_pq|      false|
+| default|     uber_data_ex_sq|      false|
+| default|         uber_ex_csv|      false|
++--------+--------------------+-----------+
+
+>>> def memory_sink(df, freq):
+...     return df.writeStream.format("memory") \
+...         .queryName("iris") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .start()
+... 
+>>> spark.sql("select * from iris").show()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'Table or view not found: iris; line 1 pos 14'
+>>> spark.sql("show tables").show()
++--------+--------------------+-----------+
+|database|           tableName|isTemporary|
++--------+--------------------+-----------+
+| default|       airport_codes|      false|
+| default|airport_codes_part_2|      false|
+| default|             iris_ml|      false|
+| default|           lego_sets|      false|
+| default|         lego_themes|      false|
+| default|titanic_train_orc...|      false|
+| default|        uber_data_ex|      false|
+| default|   uber_data_ex_avro|      false|
+| default|    uber_data_ex_csv|      false|
+| default|    uber_data_ex_orc|      false|
+| default|     uber_data_ex_pq|      false|
+| default|     uber_data_ex_sq|      false|
+| default|         uber_ex_csv|      false|
++--------+--------------------+-----------+
+
+>>> stream = mamory_sink(parsed_iris, 5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'mamory_sink' is not defined
+>>> stream = memory_sink(parsed_iris, 5)
+>>> spark.sql("select * from iris").show()
++-----------+----------+-----------+----------+-------+------+
+|sepalLength|sepalWidth|petalLength|petalWidth|species|offset|
++-----------+----------+-----------+----------+-------+------+
+|       null|      null|       null|      null|   null|     0|
+|        5.1|       3.5|        1.4|       0.2| setosa|     1|
+|        4.9|       3.0|        1.4|       0.2| setosa|     2|
+|        4.7|       3.2|        1.3|       0.2| setosa|     3|
+|        4.6|       3.1|        1.5|       0.2| setosa|     4|
+|        5.0|       3.6|        1.4|       0.2| setosa|     5|
+|        5.4|       3.9|        1.7|       0.4| setosa|     6|
+|        4.6|       3.4|        1.4|       0.3| setosa|     7|
+|        5.0|       3.4|        1.5|       0.2| setosa|     8|
+|        4.4|       2.9|        1.4|       0.2| setosa|     9|
+|        4.9|       3.1|        1.5|       0.1| setosa|    10|
+|        5.4|       3.7|        1.5|       0.2| setosa|    11|
+|        4.8|       3.4|        1.6|       0.2| setosa|    12|
+|        4.8|       3.0|        1.4|       0.1| setosa|    13|
+|        4.3|       3.0|        1.1|       0.1| setosa|    14|
++-----------+----------+-----------+----------+-------+------+
+
+>>> spark.sql("select count(*) from iris").show()
++--------+
+|count(1)|
++--------+
+|     135|
++--------+
+
+>>> spark.sql("select count(*) from iris").show()
++--------+
+|count(1)|
++--------+
+|     152|
++--------+
+
+>>> spark.sql("select count(*), species from iris group by species").show()
++--------+----------+
+|count(1)|   species|
++--------+----------+
+|      50| virginica|
+|       2|      null|
+|      50|versicolor|
+|      50|    setosa|
++--------+----------+
+
+>>> spark.sql("select count(*), species from iris where iris.species is not null group by species").show()
++--------+----------+
+|count(1)|   species|
++--------+----------+
+|      50| virginica|
+|      50|versicolor|
+|      50|    setosa|
++--------+----------+
+
+>>> spark.sql("select species, count(*) as total from iris where iris.species is not null group by species").show()
++----------+-----+
+|   species|total|
++----------+-----+
+| virginica|   50|
+|versicolor|   50|
+|    setosa|   50|
++----------+-----+
+
+>>> spark.sql("select species, count(*) as total from iris where iris.species is not null group by species").show()
++----------+-----+
+|   species|total|
++----------+-----+
+| virginica|   50|
+|versicolor|   50|
+|    setosa|   50|
++----------+-----+
+
+>>> spark.sql("show tables").show()
++--------+--------------------+-----------+
+|database|           tableName|isTemporary|
++--------+--------------------+-----------+
+| default|       airport_codes|      false|
+| default|airport_codes_part_2|      false|
+| default|             iris_ml|      false|
+| default|           lego_sets|      false|
+| default|         lego_themes|      false|
+| default|titanic_train_orc...|      false|
+| default|        uber_data_ex|      false|
+| default|   uber_data_ex_avro|      false|
+| default|    uber_data_ex_csv|      false|
+| default|    uber_data_ex_orc|      false|
+| default|     uber_data_ex_pq|      false|
+| default|     uber_data_ex_sq|      false|
+| default|         uber_ex_csv|      false|
+|        |                iris|       true|
++--------+--------------------+-----------+
+
+>>> def file_sink(df, freq):
+...     return df.writeStream.format("parquet") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .option("path","my_parquet_sink") \
+...         .option("checkpointLocation", "timofeeva_iris_file_checkpoint") \
+...         .start()
+... 
+>>> stream = file_sink(parsed_iris, 5)
+>>> stream.stop()
+>>> spark.read.parquet("my_parquet_sink").show()
++-----------+----------+-----------+----------+----------+------+
+|sepalLength|sepalWidth|petalLength|petalWidth|   species|offset|
++-----------+----------+-----------+----------+----------+------+
+|        5.6|       2.7|        4.2|       1.3|versicolor|    95|
+|        5.7|       3.0|        4.2|       1.2|versicolor|    96|
+|        5.7|       2.9|        4.2|       1.3|versicolor|    97|
+|        6.2|       2.9|        4.3|       1.3|versicolor|    98|
+|        5.1|       2.5|        3.0|       1.1|versicolor|    99|
+|        5.2|       2.7|        3.9|       1.4|versicolor|    60|
+|        5.0|       2.0|        3.5|       1.0|versicolor|    61|
+|        5.9|       3.0|        4.2|       1.5|versicolor|    62|
+|        6.0|       2.2|        4.0|       1.0|versicolor|    63|
+|        6.1|       2.9|        4.7|       1.4|versicolor|    64|
+|        5.6|       2.5|        3.9|       1.1|versicolor|    70|
+|        5.9|       3.2|        4.8|       1.8|versicolor|    71|
+|        6.1|       2.8|        4.0|       1.3|versicolor|    72|
+|        6.3|       2.5|        4.9|       1.5|versicolor|    73|
+|        6.1|       2.8|        4.7|       1.2|versicolor|    74|
+|        6.4|       2.9|        4.3|       1.3|versicolor|    75|
+|        6.6|       3.0|        4.4|       1.4|versicolor|    76|
+|        6.8|       2.8|        4.8|       1.4|versicolor|    77|
+|        6.7|       3.0|        5.0|       1.7|versicolor|    78|
+|        6.0|       2.9|        4.5|       1.5|versicolor|    79|
++-----------+----------+-----------+----------+----------+------+
+only showing top 20 rows
+
+>>> df = spark.read.parquet("my_parquet_sink")
+>>> df.show()
++-----------+----------+-----------+----------+----------+------+
+|sepalLength|sepalWidth|petalLength|petalWidth|   species|offset|
++-----------+----------+-----------+----------+----------+------+
+|        5.6|       2.7|        4.2|       1.3|versicolor|    95|
+|        5.7|       3.0|        4.2|       1.2|versicolor|    96|
+|        5.7|       2.9|        4.2|       1.3|versicolor|    97|
+|        6.2|       2.9|        4.3|       1.3|versicolor|    98|
+|        5.1|       2.5|        3.0|       1.1|versicolor|    99|
+|        5.2|       2.7|        3.9|       1.4|versicolor|    60|
+|        5.0|       2.0|        3.5|       1.0|versicolor|    61|
+|        5.9|       3.0|        4.2|       1.5|versicolor|    62|
+|        6.0|       2.2|        4.0|       1.0|versicolor|    63|
+|        6.1|       2.9|        4.7|       1.4|versicolor|    64|
+|        5.6|       2.5|        3.9|       1.1|versicolor|    70|
+|        5.9|       3.2|        4.8|       1.8|versicolor|    71|
+|        6.1|       2.8|        4.0|       1.3|versicolor|    72|
+|        6.3|       2.5|        4.9|       1.5|versicolor|    73|
+|        6.1|       2.8|        4.7|       1.2|versicolor|    74|
+|        6.4|       2.9|        4.3|       1.3|versicolor|    75|
+|        6.6|       3.0|        4.4|       1.4|versicolor|    76|
+|        6.8|       2.8|        4.8|       1.4|versicolor|    77|
+|        6.7|       3.0|        5.0|       1.7|versicolor|    78|
+|        6.0|       2.9|        4.5|       1.5|versicolor|    79|
++-----------+----------+-----------+----------+----------+------+
+only showing top 20 rows
+
+>>> df.count()
+140
+>>> df.count()
+140
+>>> spark.read.parquet("my_parquet_sink").createOrReplaceTempView("iris_parquet")
+>>> spark.sql("show tables").show()
++--------+--------------------+-----------+
+|database|           tableName|isTemporary|
++--------+--------------------+-----------+
+| default|       airport_codes|      false|
+| default|airport_codes_part_2|      false|
+| default|             iris_ml|      false|
+| default|           lego_sets|      false|
+| default|         lego_themes|      false|
+| default|titanic_train_orc...|      false|
+| default|        uber_data_ex|      false|
+| default|   uber_data_ex_avro|      false|
+| default|    uber_data_ex_csv|      false|
+| default|    uber_data_ex_orc|      false|
+| default|     uber_data_ex_pq|      false|
+| default|     uber_data_ex_sq|      false|
+| default|         uber_ex_csv|      false|
+|        |                iris|       true|
+|        |        iris_parquet|       true|
++--------+--------------------+-----------+
+
+>>> spark.sql("select species, count(*) as total from iris_parquet group by species").show()
++----------+-----+
+|   species|total|
++----------+-----+
+| virginica|   39|
+|      null|    1|
+|versicolor|   50|
+|    setosa|   50|
++----------+-----+
+
+>>> spark.sql("select species, count(*) as total from iris_parquet where species is not null group by species").show()
++----------+-----+
+|   species|total|
++----------+-----+
+| virginica|   39|
+|versicolor|   50|
+|    setosa|   50|
++----------+-----+
+
+>>> spark.sql("select species, count(*) as total from iris where species is not null group by species").show()
++----------+-----+
+|   species|total|
++----------+-----+
+| virginica|   50|
+|versicolor|   50|
+|    setosa|   50|
++----------+-----+
+
+>>> def kafka_sink(df, freq):
+...     return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+...         .writeStream \
+...         .format("kafka") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .option("topic", "timofeeva_iris_sink") \
+...         .option("kafka.bootstrap.servers", kafka_brokers) \
+...         .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+...         .start()
+... 
+>>> stream = kafka_sink(parsed_iris, 5)
+>>> stream.stop()
+>>> def kafka_sink(df, freq):
+...     return df.selectExpr("CAST(null AS STRING) as key", "CAST(to_json(struct(*)) AS STRING) as value") \
+...         .writeStream \
+...         .format("kafka") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .option("topic", "timofeeva_iris_sink") \
+...         .option("kafka.bootstrap.servers", kafka_brokers) \
+...         .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+...         .start()
+... 
+>>> stream = kafka_sink_json(parsed_iris, 5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'kafka_sink_json' is not defined
+>>>     return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+  File "<stdin>", line 1
+    return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+    ^
+IndentationError: unexpected indent
+>>>         .writeStream \
+  File "<stdin>", line 1
+    .writeStream \
+    ^
+IndentationError: unexpected indent
+>>>         .format("kafka") \
+  File "<stdin>", line 1
+    .format("kafka") \
+    ^
+IndentationError: unexpected indent
+>>>         .trigger(processingTime='%s seconds' % freq ) \
+  File "<stdin>", line 1
+    .trigger(processingTime='%s seconds' % freq ) \
+    ^
+IndentationError: unexpected indent
+>>>         .option("topic", "timofeeva_iris_sink") \
+  File "<stdin>", line 1
+    .option("topic", "timofeeva_iris_sink") \
+    ^
+IndentationError: unexpected indent
+>>>         .option("kafka.bootstrap.servers", kafka_brokers) \
+  File "<stdin>", line 1
+    .option("kafka.bootstrap.servers", kafka_brokers) \
+    ^
+IndentationError: unexpected indent
+>>>         .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+  File "<stdin>", line 1
+    .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+    ^
+IndentationError: unexpected indent
+>>>         .start()def kafka_sink(df, freq):
+  File "<stdin>", line 1
+    .start()def kafka_sink(df, freq):
+    ^
+IndentationError: unexpected indent
+>>>     return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+  File "<stdin>", line 1
+    return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+    ^
+IndentationError: unexpected indent
+>>>         .writeStream \
+  File "<stdin>", line 1
+    .writeStream \
+    ^
+IndentationError: unexpected indent
+>>>         .format("kafka") \
+  File "<stdin>", line 1
+    .format("kafka") \
+    ^
+IndentationError: unexpected indent
+>>>         .trigger(processingTime='%s seconds' % freq ) \
+  File "<stdin>", line 1
+    .trigger(processingTime='%s seconds' % freq ) \
+    ^
+IndentationError: unexpected indent
+>>>         .option("topic", "timofeeva_iris_sink") \
+  File "<stdin>", line 1
+    .option("topic", "timofeeva_iris_sink") \
+    ^
+IndentationError: unexpected indent
+>>>         .option("kafka.bootstrap.servers", kafka_brokers) \
+  File "<stdin>", line 1
+    .option("kafka.bootstrap.servers", kafka_brokers) \
+    ^
+IndentationError: unexpected indent
+>>>         .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+  File "<stdin>", line 1
+    .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+    ^
+IndentationError: unexpected indent
+>>>         .start()
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> def kafka_sink(df, freq):
+...     return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+...         .writeStream \
+...         .format("kafka") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .option("topic", "timofeeva_iris_sink") \
+...         .option("kafka.bootstrap.servers", kafka_brokers) \
+...         .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+...         .start()
+... 
+>>> def kafka_sink_json(df, freq):
+...     return df.selectExpr("CAST(null AS STRING) as key", "CAST(to_json(struct(*)) AS STRING) as value") \
+...         .writeStream \
+...         .format("kafka") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .option("topic", "timofeeva_iris_sink") \
+...         .option("kafka.bootstrap.servers", kafka_brokers) \
+...         .option("checkpointLocation", "timofeeva_iris_kafka_checkpoint") \
+...         .start()
+... 
+>>> stream = kafka_sink_json(parsed_iris, 5)
+>>> stream.stop()
+>>> 22/08/29 13:54:25 WARN clients.NetworkClient: [Producer clientId=producer-1] Error while fetching metadata with correlation id 82 : {timofeeva_iris_sink=LEADER_NOT_AVAILABLE}
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> stream.stop()
+>>> extended_iris = parsed_iris.withColumn("my_current_time", F.current_timestamp())
+>>> def foreach_batch_sink(df, freq):
+...     return  df \
+...         .writeStream \
+...         .foreachBatch(foreach_batch_function) \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .start()
+... 
+>>> stream = foreach_batch_sink(extended_iris, 15)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 4, in foreach_batch_sink
+NameError: global name 'foreach_batch_function' is not defined
+>>> def foreach_batch_function(df, epoch_id):
+...     print("starting epoch " + str(epoch_id) )
+...     print("average values for batch:")
+...     df.groupBy("species").avg().show()
+...     print("finishing epoch " + str(epoch_id))
+... 
+>>>  stream = foreach_batch_sink(extended_iris, 15)
+  File "<stdin>", line 1
+    stream = foreach_batch_sink(extended_iris, 15)
+    ^
+IndentationError: unexpected indent
+>>> stream = foreach_batch_sink(extended_iris, 15)
+>>> starting epoch 0
+average values for batch:
++-------+-----------------+-----------------+-----------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)| avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+-----------------+-------------------+-----------+
+|   null|             null|             null|             null|               null|        0.0|
+| setosa|4.824999928474426|3.199999988079071|1.399999976158142|0.20000000298023224|        2.5|
++-------+-----------------+-----------------+-----------------+-------------------+-----------+
+
+finishing epoch 0
+starting epoch 1
+average values for batch:
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)|  avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+| setosa|4.880000019073487|3.440000057220459|1.4799999952316285|0.26000000536441803|        7.0|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+
+finishing epoch 1
+starting epoch 2
+average values for batch:
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)|  avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+| setosa|4.840000152587891|3.240000009536743|1.4200000047683716|0.14000000208616256|       12.0|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+
+finishing epoch 2
+starting epoch 3
+average values for batch:
++-------+-----------------+------------------+------------------+------------------+-----------+
+|species| avg(sepalLength)|   avg(sepalWidth)|  avg(petalLength)|   avg(petalWidth)|avg(offset)|
++-------+-----------------+------------------+------------------+------------------+-----------+
+| setosa|5.539999961853027|3.9200000286102297|1.4200000047683716|0.3200000077486038|       17.0|
++-------+-----------------+------------------+------------------+------------------+-----------+
+
+finishing epoch 3
+starting epoch 4
+average values for batch:
++-------+-----------------+------------------+------------------+------------------+-----------+
+|species| avg(sepalLength)|   avg(sepalWidth)|  avg(petalLength)|   avg(petalWidth)|avg(offset)|
++-------+-----------------+------------------+------------------+------------------+-----------+
+| setosa|5.059999942779541|3.5599999904632567|1.4800000190734863|0.3200000047683716|       22.0|
++-------+-----------------+------------------+------------------+------------------+-----------+
+
+finishing epoch 4
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> stream = foreach_batch_sink(extended_iris, 15)starting epoch 5
+average values for batch:
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> 22/08/29 14:06:45 WARN scheduler.TaskSetManager: Lost task 90.0 in stage 221.0 (TID 2657, localhost, executor driver): TaskKilled (Stage cancelled)
+22/08/29 14:06:45 WARN scheduler.TaskSetManager: Lost task 92.0 in stage 221.0 (TID 2659, localhost, executor driver): TaskKilled (Stage cancelled)
+22/08/29 14:06:45 ERROR streaming.MicroBatchExecution: Query [id = 9a17176f-191b-4524-84a6-ea680595cd77, runId = 3e3a23f6-74bf-432b-a787-1836afbf778f] terminated with error
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 2381, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 191, in call
+    raise e
+Py4JJavaError: An error occurred while calling o239.showString.
+: org.apache.spark.SparkException: Job 173 cancelled as part of cancellation of all jobs
+	at org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1925)
+	at org.apache.spark.scheduler.DAGScheduler.handleJobCancellation(DAGScheduler.scala:1860)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$doCancelAllJobs$1.apply$mcVI$sp(DAGScheduler.scala:852)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$doCancelAllJobs$1.apply(DAGScheduler.scala:852)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$doCancelAllJobs$1.apply(DAGScheduler.scala:852)
+	at scala.collection.mutable.HashSet.foreach(HashSet.scala:78)
+	at org.apache.spark.scheduler.DAGScheduler.doCancelAllJobs(DAGScheduler.scala:852)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2118)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2095)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2084)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:759)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2067)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2088)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2107)
+	at org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:370)
+	at org.apache.spark.sql.execution.CollectLimitExec.executeCollect(limit.scala:38)
+	at org.apache.spark.sql.Dataset.org$apache$spark$sql$Dataset$$collectFromPlan(Dataset.scala:3388)
+	at org.apache.spark.sql.Dataset$$anonfun$head$1.apply(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset$$anonfun$head$1.apply(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset$$anonfun$53.apply(Dataset.scala:3369)
+	at org.apache.spark.sql.execution.SQLExecution$$anonfun$withNewExecutionId$1.apply(SQLExecution.scala:80)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:127)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:75)
+	at org.apache.spark.sql.Dataset.org$apache$spark$sql$Dataset$$withAction(Dataset.scala:3368)
+	at org.apache.spark.sql.Dataset.head(Dataset.scala:2550)
+	at org.apache.spark.sql.Dataset.take(Dataset.scala:2764)
+	at org.apache.spark.sql.Dataset.getRows(Dataset.scala:254)
+	at org.apache.spark.sql.Dataset.showString(Dataset.scala:291)
+	at sun.reflect.GeneratedMethodAccessor77.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:473)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy29.call(Unknown Source)
+	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$$anonfun$callForeachBatch$1.apply(ForeachBatchSink.scala:55)
+	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$$anonfun$callForeachBatch$1.apply(ForeachBatchSink.scala:55)
+	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:35)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$org$apache$spark$sql$execution$streaming$MicroBatchExecution$$runBatch$5$$anonfun$apply$19.apply(MicroBatchExecution.scala:548)
+	at org.apache.spark.sql.execution.SQLExecution$$anonfun$withNewExecutionId$1.apply(SQLExecution.scala:80)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:127)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:75)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$org$apache$spark$sql$execution$streaming$MicroBatchExecution$$runBatch$5.apply(MicroBatchExecution.scala:546)
+	at org.apache.spark.sql.execution.streaming.ProgressReporter$class.reportTimeTaken(ProgressReporter.scala:351)
+	at org.apache.spark.sql.execution.streaming.StreamExecution.reportTimeTaken(StreamExecution.scala:58)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution.org$apache$spark$sql$execution$streaming$MicroBatchExecution$$runBatch(MicroBatchExecution.scala:545)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1$$anonfun$apply$mcZ$sp$1.apply$mcV$sp(MicroBatchExecution.scala:198)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1$$anonfun$apply$mcZ$sp$1.apply(MicroBatchExecution.scala:166)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1$$anonfun$apply$mcZ$sp$1.apply(MicroBatchExecution.scala:166)
+	at org.apache.spark.sql.execution.streaming.ProgressReporter$class.reportTimeTaken(ProgressReporter.scala:351)
+	at org.apache.spark.sql.execution.streaming.StreamExecution.reportTimeTaken(StreamExecution.scala:58)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1.apply$mcZ$sp(MicroBatchExecution.scala:166)
+	at org.apache.spark.sql.execution.streaming.ProcessingTimeExecutor.execute(TriggerExecutor.scala:56)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:160)
+	at org.apache.spark.sql.execution.streaming.StreamExecution.org$apache$spark$sql$execution$streaming$StreamExecution$$runStream(StreamExecution.scala:281)
+	at org.apache.spark.sql.execution.streaming.StreamExecution$$anon$1.run(StreamExecution.scala:193)
+stream.stop()
+>>> stream.stop()
+>>> stream = foreach_batch_sink(extended_iris, 5)
+>>> starting epoch 0
+average values for batch:
++-------+-----------------+-----------------+-----------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)| avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+-----------------+-------------------+-----------+
+|   null|             null|             null|             null|               null|        0.0|
+| setosa|4.824999928474426|3.199999988079071|1.399999976158142|0.20000000298023224|        2.5|
++-------+-----------------+-----------------+-----------------+-------------------+-----------+
+
+finishing epoch 0
+starting epoch 1
+average values for batch:
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)|  avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+| setosa|4.880000019073487|3.440000057220459|1.4799999952316285|0.26000000536441803|        7.0|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+
+finishing epoch 1
+starting epoch 2
+average values for batch:
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)|  avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+| setosa|4.840000152587891|3.240000009536743|1.4200000047683716|0.14000000208616256|       12.0|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+
+finishing epoch 2
+starting epoch 3
+average values for batch:
++-------+-----------------+------------------+------------------+------------------+-----------+
+|species| avg(sepalLength)|   avg(sepalWidth)|  avg(petalLength)|   avg(petalWidth)|avg(offset)|
++-------+-----------------+------------------+------------------+------------------+-----------+
+| setosa|5.539999961853027|3.9200000286102297|1.4200000047683716|0.3200000077486038|       17.0|
++-------+-----------------+------------------+------------------+------------------+-----------+
+
+finishing epoch 3
+starting epoch 4
+average values for batch:
++-------+-----------------+------------------+------------------+------------------+-----------+
+|species| avg(sepalLength)|   avg(sepalWidth)|  avg(petalLength)|   avg(petalWidth)|avg(offset)|
++-------+-----------------+------------------+------------------+------------------+-----------+
+| setosa|5.059999942779541|3.5599999904632567|1.4800000190734863|0.3200000047683716|       22.0|
++-------+-----------------+------------------+------------------+------------------+-----------+
+
+finishing epoch 4
+starting epoch 5
+average values for batch:
++-------+-----------------+-----------------+----------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)|avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+----------------+-------------------+-----------+
+| setosa|5.039999961853027|3.340000057220459|             1.6|0.24000000357627868|       27.0|
++-------+-----------------+-----------------+----------------+-------------------+-----------+
+
+finishing epoch 5
+starting epoch 6
+average values for batch:
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+|species| avg(sepalLength)|  avg(sepalWidth)|  avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+| setosa|5.119999980926513|3.599999952316284|1.5200000047683715|0.22000000327825547|       32.0|
++-------+-----------------+-----------------+------------------+-------------------+-----------+
+
+finishing epoch 6
+starting epoch 7
+average values for batch:
++-------+-----------------+------------------+------------------+-----------------+-----------+
+|species| avg(sepalLength)|   avg(sepalWidth)|  avg(petalLength)|  avg(petalWidth)|avg(offset)|
++-------+-----------------+------------------+------------------+-----------------+-----------+
+| setosa|4.940000057220459|3.2799999713897705|1.3399999856948852|0.180000002682209|       37.0|
++-------+-----------------+------------------+------------------+-----------------+-----------+
+
+finishing epoch 7
+starting epoch 8
+average values for batch:
++-------+----------------+------------------+-----------------+-------------------+-----------+
+|species|avg(sepalLength)|   avg(sepalWidth)| avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+----------------+------------------+-----------------+-------------------+-----------+
+| setosa|             4.8|3.1800000190734865|1.399999976158142|0.32000001072883605|       42.0|
++-------+----------------+------------------+-----------------+-------------------+-----------+
+
+finishing epoch 8
+starting epoch 9
+average values for batch:
++-------+-----------------+---------------+------------------+-------------------+-----------+
+|species| avg(sepalLength)|avg(sepalWidth)|  avg(petalLength)|    avg(petalWidth)|avg(offset)|
++-------+-----------------+---------------+------------------+-------------------+-----------+
+| setosa|4.980000019073486|            3.5|1.5599999904632569|0.26000000536441803|       47.0|
++-------+-----------------+---------------+------------------+-------------------+-----------+
+
+finishing epoch 9
+starting epoch 10
+average values for batch:
++----------+-----------------+-----------------+-----------------+-------------------+-----------+
+|   species| avg(sepalLength)|  avg(sepalWidth)| avg(petalLength)|    avg(petalWidth)|avg(offset)|
++----------+-----------------+-----------------+-----------------+-------------------+-----------+
+|versicolor|6.450000047683716|2.949999988079071|4.524999976158142| 1.4249999821186066|       52.5|
+|    setosa|              5.0|3.299999952316284|1.399999976158142|0.20000000298023224|       50.0|
++----------+-----------------+-----------------+-----------------+-------------------+-----------+
+
+finishing epoch 10
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> stream.stop()
+>>> 
