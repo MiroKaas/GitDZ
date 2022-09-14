@@ -1,0 +1,313 @@
+[student1669_3@bigdataanalytics-worker-3 ~]$ export SPARK_KAFKA_VERSION=0.10
+[student1669_3@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5,com.datastax.spark:spark-cassandra-connector_2.11:2.4.2
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student1669_3/.ivy2/cache
+The jars for the packages stored in: /home/student1669_3/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+com.datastax.spark#spark-cassandra-connector_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-4fc21f4b-70c0-4201-99c8-bfabee9b7c18;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+	found com.datastax.spark#spark-cassandra-connector_2.11;2.4.2 in central
+	found commons-beanutils#commons-beanutils;1.9.3 in central
+	found commons-collections#commons-collections;3.2.2 in central
+	found com.twitter#jsr166e;1.1.0 in central
+	found org.joda#joda-convert;1.2 in central
+	found io.netty#netty-all;4.0.33.Final in central
+	found joda-time#joda-time;2.3 in central
+	found org.scala-lang#scala-reflect;2.11.7 in central
+downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.4.2/spark-cassandra-connector_2.11-2.4.2.jar ...
+	[SUCCESSFUL ] com.datastax.spark#spark-cassandra-connector_2.11;2.4.2!spark-cassandra-connector_2.11.jar (520ms)
+downloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar ...
+	[SUCCESSFUL ] commons-beanutils#commons-beanutils;1.9.3!commons-beanutils.jar (60ms)
+downloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar ...
+	[SUCCESSFUL ] com.twitter#jsr166e;1.1.0!jsr166e.jar (55ms)
+downloading https://repo1.maven.org/maven2/org/joda/joda-convert/1.2/joda-convert-1.2.jar ...
+	[SUCCESSFUL ] org.joda#joda-convert;1.2!joda-convert.jar (54ms)
+downloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar ...
+	[SUCCESSFUL ] io.netty#netty-all;4.0.33.Final!netty-all.jar (120ms)
+downloading https://repo1.maven.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.jar ...
+	[SUCCESSFUL ] joda-time#joda-time;2.3!joda-time.jar (70ms)
+downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar ...
+	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar (201ms)
+downloading https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar ...
+	[SUCCESSFUL ] commons-collections#commons-collections;3.2.2!commons-collections.jar (71ms)
+:: resolution report :: resolve 6170ms :: artifacts dl 1159ms
+	:: modules in use:
+	com.datastax.spark#spark-cassandra-connector_2.11;2.4.2 from central in [default]
+	com.twitter#jsr166e;1.1.0 from central in [default]
+	commons-beanutils#commons-beanutils;1.9.3 from central in [default]
+	commons-collections#commons-collections;3.2.2 from central in [default]
+	io.netty#netty-all;4.0.33.Final from central in [default]
+	joda-time#joda-time;2.3 from central in [default]
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.joda#joda-convert;1.2 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.scala-lang#scala-reflect;2.11.7 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   14  |   8   |   8   |   0   ||   14  |   8   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-4fc21f4b-70c0-4201-99c8-bfabee9b7c18
+	confs: [default]
+	8 artifacts copied, 6 already retrieved (16744kB/28ms)
+22/09/14 16:06:27 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> from pyspark.sql.types import StructType, StringType, IntegerType, TimestampType
+>>> cass_animals_df = spark.read \
+...     .format("org.apache.spark.sql.cassandra") \
+...     .options(table="animals", keyspace="lesson7") \
+...     .load()
+>>> 
+>>> cass_animals_df.printSchema()
+root
+ |-- id: integer (nullable = true)
+ |-- name: string (nullable = true)
+ |-- size: string (nullable = true)
+
+>>> cass_animals_df.show()
++---+-----+------+                                                              
+| id| name|  size|
++---+-----+------+
+| 13|  Bat| Small|
+| 11|  Cow|   Big|
+|  1|Snake| Small|
+|  3|  Dog|Medium|
+|  4| Bear|   Big|
+|  2|  Cat| Small|
++---+-----+------+
+
+>>> bat_df = spark.sql(""" select 13 as id, "Bat" as name, "Small" as size """)
+>>> bat_df.show()
++---+----+-----+
+| id|name| size|
++---+----+-----+
+| 13| Bat|Small|
++---+----+-----+
+
+>>> bat_df.write \
+...     ..format("org.apache.spark.sql.cassandra") \
+  File "<stdin>", line 2
+    ..format("org.apache.spark.sql.cassandra") \
+     ^
+SyntaxError: invalid syntax
+>>>     .options(table="animals", keyspace="lesson7") \
+  File "<stdin>", line 1
+    .options(table="animals", keyspace="lesson7") \
+    ^
+IndentationError: unexpected indent
+>>>     .mode("append") \
+  File "<stdin>", line 1
+    .mode("append") \
+    ^
+IndentationError: unexpected indent
+>>> bat_df.write \
+... .format("org.apache.spark.sql.cassandra") \
+... .options(table="animals", keyspace="lesson7") \
+... .mode("append") \
+... .save()
+>>> cass_animals_df.show()
++---+-----+------+
+| id| name|  size|
++---+-----+------+
+| 13|  Bat| Small|
+| 11|  Cow|   Big|
+|  1|Snake| Small|
+|  3|  Dog|Medium|
+|  4| Bear|   Big|
+|  2|  Cat| Small|
++---+-----+------+
+
+>>> cass_big_df = spark.read \
+...     .format("org.apache.spark.sql.cassandra") \
+...     .options(table="users_unknown", keyspace="keyspace1") \
+...     .load()
+>>> ass_big_df.show()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'ass_big_df' is not defined
+>>> cass_big_df.show()
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  39729| young|null|     F|null|null|null|null|null|null|   null|
+|  31468|midage|null|     M|null|null|null|null|null|null|   null|
+|  37970|   old|null|     M|null|null|null|null|null|null|   null|
+|  41876|   old|null|     M|null|null|null|null|null|null|   null|
+|  45293|   old|null|     F|null|null|null|null|null|null|   null|
+|  36928|midage|null|     M|null|null|null|null|null|null|   null|
+|  34100|   old|null|     M|null|null|null|null|null|null|   null|
+|  35078|   old|null|     M|null|null|null|null|null|null|   null|
+|  33025|midage|null|     F|null|null|null|null|null|null|   null|
+|  49029| young|null|     F|null|null|null|null|null|null|   null|
+|  44320|midage|null|     M|null|null|null|null|null|null|   null|
+|  31525|midage|null|     F|null|null|null|null|null|null|   null|
+|  33367|midage|null|     F|null|null|null|null|null|null|   null|
+|  48819| young|null|     F|null|null|null|null|null|null|   null|
+|  41484| young|null|     M|null|null|null|null|null|null|   null|
+|  33669| young|null|     F|null|null|null|null|null|null|   null|
+|  49556|   old|null|     M|null|null|null|null|null|null|   null|
+|  47507|   old|null|     F|null|null|null|null|null|null|   null|
+|  37185| young|null|     F|null|null|null|null|null|null|   null|
+|  33220|midage|null|     M|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+only showing top 20 rows
+
+>>> cass_big_df.filter(F.col("user_id")=="48819").show()`
+  File "<stdin>", line 1
+    cass_big_df.filter(F.col("user_id")=="48819").show()`
+                                                        ^
+SyntaxError: invalid syntax
+>>> cass_big_df.filter(F.col("user_id")=="48819").show()
++-------+-----+----+------+----+----+----+----+----+----+-------+
+|user_id|  age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+-----+----+------+----+----+----+----+----+----+-------+
+|  48819|young|null|     F|null|null|null|null|null|null|   null|
++-------+-----+----+------+----+----+----+----+----+----+-------+
+
+>>> def explain(self, extended=True):
+...     if extended:
+...         print(self._jdf.queryExecution().toString())
+...     else:
+...         print(self._jdf.queryExecution().simpleString())
+... 
+>>> cass_big_df.filter(F.col("user_id")=="48819").explain(True)
+== Parsed Logical Plan ==
+'Filter ('user_id = 48819)
++- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Analyzed Logical Plan ==
+user_id: int, age: string, c: int, gender: string, ma1: int, ma2: int, mi1: int, mi2: int, s1: int, s2: int, segment: string
+Filter (user_id#49 = cast(48819 as int))
++- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Optimized Logical Plan ==
+Filter (isnotnull(user_id#49) && (user_id#49 = 48819))
++- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Physical Plan ==
+*(1) Filter isnotnull(user_id#49)
++- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [IsNotNull(user_id), *EqualTo(user_id,48819)], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
+>>> cass_big_df.createOrReplaceTempView("cass_df")
+>>> spark.sql("show_tables").show()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 73, in deco
+    raise ParseException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.ParseException: u"\nmismatched input 'show_tables' expecting {'(', 'SELECT', 'FROM', 'ADD', 'DESC', 'WITH', 'VALUES', 'CREATE', 'TABLE', 'INSERT', 'DELETE', 'DESCRIBE', 'EXPLAIN', 'SHOW', 'USE', 'DROP', 'ALTER', 'MAP', 'SET', 'RESET', 'START', 'COMMIT', 'ROLLBACK', 'REDUCE', 'REFRESH', 'CLEAR', 'CACHE', 'UNCACHE', 'DFS', 'TRUNCATE', 'ANALYZE', 'LIST', 'REVOKE', 'GRANT', 'LOCK', 'UNLOCK', 'MSCK', 'EXPORT', 'IMPORT', 'LOAD'}(line 1, pos 0)\n\n== SQL ==\nshow_tables\n^^^\n"
+>>> spark.sql("show tables").show()
+22/09/14 16:21:28 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
++--------+--------------------+-----------+
+|database|           tableName|isTemporary|
++--------+--------------------+-----------+
+| default|  airport_codes_part|      false|
+| default|airport_codes_part_2|      false|
+| default|             iris_ml|      false|
+| default|           lego_sets|      false|
+| default|         lego_themes|      false|
+| default|            test_tab|      false|
+| default|titanic_train_orc...|      false|
+| default|        uber_data_ex|      false|
+| default|   uber_data_ex_avro|      false|
+| default|    uber_data_ex_csv|      false|
+| default|    uber_data_ex_orc|      false|
+| default|     uber_data_ex_pq|      false|
+| default|     uber_data_ex_sq|      false|
+| default|         uber_ex_csv|      false|
+|        |             cass_df|       true|
++--------+--------------------+-----------+
+
+>>> spark.sql("select * from cass_df where user_id between 40000 and 40250").show()
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  40029| young|null|     F|null|null|null|null|null|null|   null|
+|  40074| young|null|     M|null|null|null|null|null|null|   null|
+|  40011| young|null|     F|null|null|null|null|null|null|   null|
+|  40143| young|null|     F|null|null|null|null|null|null|   null|
+|  40158| young|null|     M|null|null|null|null|null|null|   null|
+|  40236| young|null|     M|null|null|null|null|null|null|   null|
+|  40170| young|null|     M|null|null|null|null|null|null|   null|
+|  40180|midage|null|     M|null|null|null|null|null|null|   null|
+|  40118|   old|null|     M|null|null|null|null|null|null|   null|
+|  40136|   old|null|     M|null|null|null|null|null|null|   null|
+|  40073|   old|null|     F|null|null|null|null|null|null|   null|
+|  40049|   old|null|     F|null|null|null|null|null|null|   null|
+|  40040|   old|null|     M|null|null|null|null|null|null|   null|
+|  40083| young|null|     F|null|null|null|null|null|null|   null|
+|  40127|   old|null|     F|null|null|null|null|null|null|   null|
+|  40053| young|null|     F|null|null|null|null|null|null|   null|
+|  40128| young|null|     M|null|null|null|null|null|null|   null|
+|  40220|   old|null|     M|null|null|null|null|null|null|   null|
+|  40178|   old|null|     M|null|null|null|null|null|null|   null|
+|  40240|midage|null|     M|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+only showing top 20 rows
+
+>>> spark.sql("select * from cass_df where user_id between 40000 and 40250").explain(True)
+== Parsed Logical Plan ==
+'Project [*]
++- 'Filter (('user_id >= 40000) && ('user_id <= 40250))
+   +- 'UnresolvedRelation `cass_df`
+
+== Analyzed Logical Plan ==
+user_id: int, age: string, c: int, gender: string, ma1: int, ma2: int, mi1: int, mi2: int, s1: int, s2: int, segment: string
+Project [user_id#49, age#50, c#51, gender#52, ma1#53, ma2#54, mi1#55, mi2#56, s1#57, s2#58, segment#59]
++- Filter ((user_id#49 >= 40000) && (user_id#49 <= 40250))
+   +- SubqueryAlias `cass_df`
+      +- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Optimized Logical Plan ==
+Filter ((isnotnull(user_id#49) && (user_id#49 >= 40000)) && (user_id#49 <= 40250))
++- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Physical Plan ==
+*(1) Filter ((isnotnull(user_id#49) && (user_id#49 >= 40000)) && (user_id#49 <= 40250))
++- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [IsNotNull(user_id), GreaterThanOrEqual(user_id,40000), LessThanOrEqual(user_id,40250)], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
+>>> spark.sql("select * from cass_df where user_id in (40000, 40250)").explain(True)
+== Parsed Logical Plan ==
+'Project [*]
++- 'Filter 'user_id IN (40000,40250)
+   +- 'UnresolvedRelation `cass_df`
+
+== Analyzed Logical Plan ==
+user_id: int, age: string, c: int, gender: string, ma1: int, ma2: int, mi1: int, mi2: int, s1: int, s2: int, segment: string
+Project [user_id#49, age#50, c#51, gender#52, ma1#53, ma2#54, mi1#55, mi2#56, s1#57, s2#58, segment#59]
++- Filter user_id#49 IN (40000,40250)
+   +- SubqueryAlias `cass_df`
+      +- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Optimized Logical Plan ==
+Filter user_id#49 IN (40000,40250)
++- Relation[user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09
+
+== Physical Plan ==
+*(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@26e37a09 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [*In(user_id, [40000,40250])], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
