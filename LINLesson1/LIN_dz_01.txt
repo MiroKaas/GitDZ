@@ -1,0 +1,26 @@
+miro@hon-pc:~$ uname
+Linux
+miro@hon-pc:~$ uname -a
+Linux hon-pc 5.15.0-52-generic #58-Ubuntu SMP Thu Oct 13 08:03:55 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+miro@hon-pc:~$ hostnamectl
+ Static hostname: hon-pc
+       Icon name: computer-laptop
+         Chassis: laptop
+      Machine ID: 5260efe0382249dc95b3b9b531a1147c
+         Boot ID: 617f97c1977f4df3b3568fe98177c818
+Operating System: Ubuntu 22.04.1 LTS
+          Kernel: Linux 5.15.0-52-generic
+    Architecture: x86-64
+ Hardware Vendor: Hewlett-Packard
+  Hardware Model: HP EliteBook 2570p
+miro@hon-pc:~$ hostnamectl
+ Static hostname: hon-pc
+       Icon name: computer-laptop
+         Chassis: laptop
+      Machine ID: 5260efe0382249dc95b3b9b531a1147c
+         Boot ID: 617f97c1977f4df3b3568fe98177c818
+Operating System: Ubuntu 22.04.1 LTS
+          Kernel: Linux 5.15.0-52-generic
+    Architecture: x86-64
+ Hardware Vendor: Hewlett-Packard
+  Hardware Model: HP EliteBook 2570p
